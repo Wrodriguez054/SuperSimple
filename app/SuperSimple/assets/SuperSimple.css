@@ -1,0 +1,46 @@
+
+
+/* This is an example of a element style*/
+body{
+    font-family:  Arial, Helvetica, sans-serif;
+    padding: 100px;
+}
+
+body.dark{
+    color: rgb(241, 240, 171);
+    background: #313131;
+}
+
+body.light{
+    color: rgb(182, 241, 200);
+    background: darkseagreen;
+}
+
+body.salmon{
+    color: rgb(250, 232, 235);
+    background: rgb(238, 166, 169);
+}
+
+a{
+    color: white;
+}
+
+
+/* This is an example of a class*/
+.title{
+    font-size: 500%;
+    font-weight: bold;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color:rgb(34, 32, 32);
+    color: rgb(190, 219, 143);
+    text-align: center;
+  }
+
+
+
