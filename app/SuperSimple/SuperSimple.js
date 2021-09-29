@@ -10,18 +10,9 @@
     var className = 'light'
     let placeholder;
 
-    //function execution
-    
-    // loadJson()
-    //     .then( function( response ){
-    //         document.querySelector('.title').innerHTML = setTitle( response.title );
-    //         changeThemeByClassName(className);
-    //         setButtonsActions();
-    //     })
-
     loadJson()
          .then( response => { 
-            document.querySelector('.title').innerHTML = setTitle( response.title );
+            document.querySelector('.title').textContent = setTitle( response.title );
             changeThemeByClassName(className);
             setButtonsActions();       
          })
@@ -43,7 +34,7 @@
         const timeButton = document.querySelector('#timeButton');
               timeButton.addEventListener('click', function(){ showTime()} );
         const reverseButton = document.querySelector('#reverseButton');
-              reverseButton.addEventListener('click', function(){ reverseInPlace()} );
+              reverseButton.addEventListener('click', function(){ setTitles(); } );
               
     }
 
@@ -52,8 +43,8 @@
     //Function expression
     let changeThemeByClassName = function( className ) {
         try{
-            //document.getElementById('mainWrapper').setAttribute( 'class' , className );
-            document.querySelector('#mainWrapper').setAttribute( 'class' , className );
+            document.querySelector('#mainWrapper')
+                    .setAttribute( 'class' , className );
         }
         catch(error){
             console.error(error)
@@ -63,7 +54,7 @@
     function showTime(){
         getTime()
            .then( response =>{
-            document.querySelector('#console').innerHTML = JSON.stringify(response);
+            document.querySelector('#console').textContent = JSON.stringify(response);
            }) 
     }
 
@@ -84,25 +75,21 @@
              const response = await fetch('http://worldtimeapi.org/api/ip');
              const data = await response.json();
              //u can use the response to validate what kind of response that server send it 
-             console.log(data)
              return data;
          } catch (err) {
              console.log('Client error: ', err);
          }
      }
 
-     //
-     function reverseInPlace() {
+      function revolt( phrase ){
+        let superPhrase = phrase.split('');
+        return superPhrase.reduce((accomulator, item) => item.concat(accomulator) );
+      }
 
-        let title = document.querySelector('.title').innerHTML;
-        console.log(title)
-        var words = [];
-        words = title.match(/\S+/g);
-        var result = "";
-        for (var i = 0; i < words.length; i++) {
-           result += words[i].split('').reverse().join('') + " ";
-        }
-        document.querySelector('.title').innerHTML = result;
+      function setTitles(){
+          
+        let title = document.querySelector('.title');
+        title.textContent = revolt( title.textContent );        
       }
 
 })()
