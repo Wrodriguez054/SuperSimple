@@ -10,9 +10,11 @@
     var className = 'light'
     let placeholder;
 
+
     loadJson()
          .then( response => { 
             document.querySelector('.title').textContent = setTitle( response.title );
+
             changeThemeByClassName(className);
             setButtonsActions();       
          })
@@ -34,7 +36,9 @@
         const timeButton = document.querySelector('#timeButton');
               timeButton.addEventListener('click', function(){ showTime()} );
         const reverseButton = document.querySelector('#reverseButton');
-              reverseButton.addEventListener('click', function(){ setTitles(); } );
+
+              reverseButton.addEventListener('click', function(){ reverseInPlace()} );
+
               
     }
 
@@ -43,8 +47,10 @@
     //Function expression
     let changeThemeByClassName = function( className ) {
         try{
+
             document.querySelector('#mainWrapper')
                     .setAttribute( 'class' , className );
+
         }
         catch(error){
             console.error(error)
@@ -54,7 +60,9 @@
     function showTime(){
         getTime()
            .then( response =>{
+
             document.querySelector('#console').textContent = JSON.stringify(response);
+
            }) 
     }
 
@@ -75,11 +83,13 @@
              const response = await fetch('http://worldtimeapi.org/api/ip');
              const data = await response.json();
              //u can use the response to validate what kind of response that server send it 
+
              return data;
          } catch (err) {
              console.log('Client error: ', err);
          }
      }
+
 
       function revolt( phrase ){
         let superPhrase = phrase.split('');
@@ -90,6 +100,8 @@
           
         let title = document.querySelector('.title');
         title.textContent = revolt( title.textContent );        
+
+
       }
 
 })()
