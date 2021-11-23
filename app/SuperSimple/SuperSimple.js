@@ -1,11 +1,7 @@
 //declarations
 
-
-
-
 (function(){
 
-    
 
     var className = 'light'
     let placeholder;
@@ -36,13 +32,36 @@
         const timeButton = document.querySelector('#timeButton');
               timeButton.addEventListener('click', function(){ showTime()} );
         const reverseButton = document.querySelector('#reverseButton');
-
-              reverseButton.addEventListener('click', function(){ reverseInPlace()} );
-
-              
+              reverseButton.addEventListener('click', function(){ setTitles()} );
+        const challenge6 = document.querySelector('#challenge6');
+              challenge6.addEventListener('click', function(){ challengeSix()} );       
     }
 
-    function buildButtons(){}
+    function challengeSix(){   
+      let countries = ['USA','Canada','Japan','Canada','Brazil','Canada','Brazil']
+      let cleaned = new Set(countries)
+      let finalArray = []
+      const contryMap  = new Map();
+          cleaned.forEach( country => { 
+             finalArray.push(countries.filter( filtered => { return filtered === country }))
+            
+             finalArray.forEach( country => contryMap.set( country[0],country.length)) 
+          })
+          console.log( finalArray.reduce((accomulator, index)=> index.length > accomulator.length ? index :accomulator).shift()) 
+    }
+
+    function challengeSixdou(){   
+        let countries = ['USA','Canada','Japan','Canada','Brazil','Canada','Brazil']
+        let cleaned = new Set(countries)
+        let finalArray = []
+        const contryMap  = new Map();
+            cleaned.forEach( country => { 
+               finalArray.push(countries.filter( filtered => { return filtered === country }))
+              
+               finalArray.forEach( country => contryMap.set( country[0],country.length)) 
+            })
+            console.log( finalArray.reduce((accomulator, index)=> index.length > accomulator.length ? index :accomulator).shift()) 
+      }
 
     //Function expression
     let changeThemeByClassName = function( className ) {
@@ -104,6 +123,8 @@
 
       }
 
+      
+
 })()
 
 
@@ -116,5 +137,17 @@ function canvasDraw(){
     ctx.arc(95, 50, 40, 0, 2 * Math.PI);
     ctx.stroke();
 }
+
+
+
+function challenge7(){
+
+}
+
+function challenge8(){
+
+}
+
+
 
 
