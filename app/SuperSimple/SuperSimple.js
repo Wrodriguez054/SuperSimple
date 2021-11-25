@@ -41,11 +41,8 @@
       let countries = ['USA','Canada','Japan','Canada','Brazil','Canada','Brazil']
       let cleaned = new Set(countries)
       let finalArray = []
-      const contryMap  = new Map();
           cleaned.forEach( country => { 
              finalArray.push(countries.filter( filtered => { return filtered === country }))
-            
-             finalArray.forEach( country => contryMap.set( country[0],country.length)) 
           })
           console.log( finalArray.reduce((accomulator, index)=> index.length > accomulator.length ? index :accomulator).shift()) 
     }
@@ -123,7 +120,15 @@
 
       }
 
-      
+      function testing(){
+        console.log(a)
+        console.log(foo())
+
+        function foo() {
+          return 3
+        }
+        var a = 1
+    }
 
 })()
 
